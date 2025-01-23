@@ -8,14 +8,16 @@ include "app/Autoload.php";
 //     (new Autoload())->loadClass($className);
 // }
 
-use app\Post as myPost;
+//use app\{Post,Test};
+use app\Post;
+use app\Test;
+use db\DataBase;
 
 spl_autoload_register([new Autoload(), 'loadClass']);
 
-$post = new myPost();
+$post = new Post();
 
-print_r($post);
-
+var_dump($post);
 
 // AR CRUD над одной записью в БД через ООП
 /*

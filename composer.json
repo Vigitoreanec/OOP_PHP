@@ -1,0 +1,9 @@
+{
+    "name": "sergey/oop",
+    "autoload": {
+        "psr-4": {
+            "Sergey\\Oop\\": "src/"
+        }
+    },
+    "require": {}
+}
