@@ -1,5 +1,5 @@
 <?php
-include './app/Autoload.php';
+include "app/Autoload.php";
 
 //spl_autoload_register("loader");
 //
@@ -8,9 +8,11 @@ include './app/Autoload.php';
 //     (new Autoload())->loadClass($className);
 // }
 
+use app\Post as myPost;
+
 spl_autoload_register([new Autoload(), 'loadClass']);
 
-$post = new Post();
+$post = new myPost();
 
 print_r($post);
 

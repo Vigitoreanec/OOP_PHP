@@ -4,6 +4,7 @@ class Autoload
 {
     public function loadClass($className)
     {
-        include './model/' . $className . ".php";
+        $filename = str_replace('app\\', '', $className);
+        include './model/' . $filename . ".php";
     }
 }

@@ -1,5 +1,5 @@
 <?php
-
+namespace app;
 class Post
 {
     public $id;
