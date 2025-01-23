@@ -7,6 +7,7 @@ include './app/Autoload.php';
 // {
 //     (new Autoload())->loadClass($className);
 // }
+
 spl_autoload_register([new Autoload(), 'loadClass']);
 
 $post = new Post();
