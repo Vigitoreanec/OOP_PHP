@@ -1,22 +1,8 @@
 <?php
-///include "app/Autoload.php";
 
 include "vendor/autoload.php";
 
-//spl_autoload_register("loader");
-//
-// function loader($className)
-// {
-//     (new Autoload())->loadClass($className);
-// }
-
-//use app\{Post,Test};
-use Sergey\Oop\Post;
-// use app\Test;
-// use db\DataBase;
-
-//spl_autoload_register([new Autoload(), 'loadClass']);
-
+use Sergey\Oop\Model\Post;
 
 $post = new Post();
 

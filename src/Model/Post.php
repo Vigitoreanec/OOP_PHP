@@ -1,5 +1,5 @@
 <?php
-namespace Sergey\Oop;
+namespace Sergey\Oop\Model;
 
 class Post
 {
