@@ -1,5 +1,5 @@
 <?php
-namespace app;
+namespace Sergey\Oop;
 
 class Post
 {

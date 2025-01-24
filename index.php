@@ -1,5 +1,7 @@
 <?php
-include "app/Autoload.php";
+///include "app/Autoload.php";
+
+include "vendor/autoload.php";
 
 //spl_autoload_register("loader");
 //
@@ -9,11 +11,12 @@ include "app/Autoload.php";
 // }
 
 //use app\{Post,Test};
-use app\Post;
-use app\Test;
-use db\DataBase;
+use Sergey\Oop\Post;
+// use app\Test;
+// use db\DataBase;
 
-spl_autoload_register([new Autoload(), 'loadClass']);
+//spl_autoload_register([new Autoload(), 'loadClass']);
+
 
 $post = new Post();
 
