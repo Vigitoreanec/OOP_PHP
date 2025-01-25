@@ -28,7 +28,8 @@ $post = new Post("post");
 $post->insert();
 
 // R -> Read
-$post = Post::get($id);
+$post = Post::getOne($id);
+$post = Post::getAll();
 
 // U -> Update
 $post->title = "new";
