@@ -15,6 +15,7 @@ $post = $post->query()->where('id','123')->get();
 $user = $user->getOne(1);
 //$post = $post->getAll();
 print_r($post);
+echo PHP_EOL;
 var_dump($user);
 var_dump($db);
 

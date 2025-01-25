@@ -37,12 +37,13 @@ abstract class Model implements IModel
     public function get()
     {
         $tableName = $this->getTableName();
-        $queryCondition = implode(' AND ', $this->query);
+        $queryCondition = implode(' = ', $this->query);
+        //$queryCondition = implode(' AND ', $this->query);
         $sql = "SELECT * from $tableName";
 
         if(!empty($queryCondition))
         {
-            $sql .= " WHERE $queryCondition";
+            $sql .= " WHERE $queryCondition;";
         }
 
         return $this->db->queryAll($sql);
