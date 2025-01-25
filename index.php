@@ -3,14 +3,18 @@
 include "vendor/autoload.php";
 
 use Sergey\Oop\Model\Post;
+use Sergey\Oop\Model\User;
 use Sergey\Oop\core\DataBase;
 
 
 $db = new DataBase();
 $post = new Post($db );
+$user = new User($db );
 //$post = $post->getOne(1);
+$user = $user->getOne(1);
 $post = $post->getAll();
 var_dump($post);
+var_dump($user);
 var_dump($db);
 
 // AR CRUD над одной записью в БД через ООП

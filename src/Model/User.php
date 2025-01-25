@@ -1,14 +1,11 @@
 <?php
 namespace Sergey\Oop\Model;
-
 use Sergey\Oop\core\DataBase;
 
-class Post
+class User
 {
     public int $id;
-    public string $title;
-    public string $text;
-
+    public string $name;
     protected $db;
     public function __construct(DataBase $db)
     {
@@ -17,12 +14,12 @@ class Post
 
     public function getOne(int $id)
     {
-        $sql = "SELECT * from posts WHERE id = $id";
+        $sql = "SELECT * from users WHERE id = $id";
         return $this->db->queryOne($sql);
     }
     public function getAll()
     {
-        $sql = "SELECT * from posts";
+        $sql = "SELECT * from users";
         return $this->db->queryOne($sql);
     }
 }
