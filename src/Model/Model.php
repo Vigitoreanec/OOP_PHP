@@ -12,10 +12,40 @@ abstract class Model implements IModel
 
     abstract protected function getTableName();
     
+    protected $query = [];
 
     public function __construct(DataBase $db)
     {
         $this->db = $db;
+    }
+
+    public function query()
+    {
+        $this->query = []; // очистка
+        return $this;
+    }
+
+    public function where(string $key, string $value)
+    {
+        $this->query = [
+            'key' => $key,
+            'value' => $value
+        ];
+        return $this;
+    }
+
+    public function get()
+    {
+        $tableName = $this->getTableName();
+        $queryCondition = implode(' AND ', $this->query);
+        $sql = "SELECT * from $tableName";
+
+        if(!empty($queryCondition))
+        {
+            $sql .= " WHERE $queryCondition";
+        }
+
+        return $this->db->queryAll($sql);
     }
 
     public function getOne(int $id)

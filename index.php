@@ -11,9 +11,10 @@ $db = new DataBase();
 $post = new Post($db );
 $user = new User($db );
 //$post = $post->getOne(1);
+$post = $post->query()->where('id','123')->get();
 $user = $user->getOne(1);
-$post = $post->getAll();
-var_dump($post);
+//$post = $post->getAll();
+print_r($post);
 var_dump($user);
 var_dump($db);
 
