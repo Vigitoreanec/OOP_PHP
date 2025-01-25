@@ -2,9 +2,10 @@
 
 namespace Sergey\Oop\Model;
 use Sergey\Oop\core\DataBase;
+use Sergey\Oop\Interfaces\IModel;
 
 
-abstract class Model
+abstract class Model implements IModel
 {
 
     protected $db;
