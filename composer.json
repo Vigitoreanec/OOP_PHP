@@ -5,5 +5,7 @@
             "Sergey\\Oop\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "ext-pdo": "*"
+    }
 }

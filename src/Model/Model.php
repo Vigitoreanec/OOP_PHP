@@ -1,6 +1,7 @@
 <?php
 
 namespace Sergey\Oop\Model;
+
 use Sergey\Oop\core\DataBase;
 use Sergey\Oop\Interfaces\IModel;
 
@@ -11,7 +12,7 @@ abstract class Model implements IModel
     protected $db;
 
     abstract protected function getTableName();
-    
+
     protected $query = [];
 
     public function __construct(DataBase $db)
@@ -41,8 +42,7 @@ abstract class Model implements IModel
         //$queryCondition = implode(' AND ', $this->query);
         $sql = "SELECT * from $tableName";
 
-        if(!empty($queryCondition))
-        {
+        if (!empty($queryCondition)) {
             $sql .= " WHERE $queryCondition;";
         }
 
@@ -51,12 +51,12 @@ abstract class Model implements IModel
 
     public function getOne(int $id)
     {
-        $sql = "SELECT * from {$this->getTableName()} WHERE id = $id";
-        return $this->db->queryOne($sql);
+        $sql = "SELECT * from {$this->getTableName()} WHERE id = :id" . PHP_EOL;
+        return $this->db->queryOne($sql, ['id' => $id]);
     }
     public function getAll()
     {
-        $sql = "SELECT * from {$this->getTableName()}";
-        return $this->db->queryOne($sql);
+        $sql = "SELECT * from {$this->getTableName()}" . PHP_EOL;
+        return $this->db->queryOne($sql, ['sda']);
     }
 }
