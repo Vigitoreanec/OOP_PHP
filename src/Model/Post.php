@@ -7,5 +7,8 @@ class Post extends Model
     public string $title;
     public string $text;
 
-    protected string $tableName = "posts";
+    protected function getTableName()
+    {
+        return "posts";
+    }
 }

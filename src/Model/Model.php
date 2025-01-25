@@ -9,7 +9,8 @@ abstract class Model
 
     protected $db;
 
-    protected string $tableName;
+    abstract protected function getTableName() : string;
+    
 
     public function __construct(DataBase $db)
     {
@@ -18,12 +19,12 @@ abstract class Model
 
     public function getOne(int $id)
     {
-        $sql = "SELECT * from {$this->tableName} WHERE id = $id";
+        $sql = "SELECT * from {$this->getTableName()} WHERE id = $id";
         return $this->db->queryOne($sql);
     }
     public function getAll()
     {
-        $sql = "SELECT * from {$this->tableName}";
+        $sql = "SELECT * from {$this->getTableName()}";
         return $this->db->queryOne($sql);
     }
 }
