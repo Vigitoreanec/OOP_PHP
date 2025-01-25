@@ -3,10 +3,15 @@
 include "vendor/autoload.php";
 
 use Sergey\Oop\Model\Post;
+use Sergey\Oop\core\DataBase;
 
-$post = new Post();
 
+$db = new DataBase();
+$post = new Post($db );
+//$post = $post->getOne(1);
+$post = $post->getAll();
 var_dump($post);
+var_dump($db);
 
 // AR CRUD над одной записью в БД через ООП
 /*
