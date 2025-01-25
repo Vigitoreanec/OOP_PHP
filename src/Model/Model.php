@@ -57,6 +57,6 @@ abstract class Model implements IModel
     public function getAll()
     {
         $sql = "SELECT * from {$this->getTableName()}" . PHP_EOL;
-        return $this->db->queryOne($sql, ['sda']);
+        return $this->db->queryOne($sql);
     }
 }

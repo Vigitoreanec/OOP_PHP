@@ -28,7 +28,7 @@ class DataBase
 
 
     //select where id = 1
-    public function queryOne(string $sql, array $params)
+    public function queryOne(string $sql, array $params = [])
     {
         return $sql;
     }
