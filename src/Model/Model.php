@@ -10,7 +10,7 @@ abstract class Model implements IModel
 
     protected $db;
 
-    abstract protected function getTableName() : string;
+    abstract protected function getTableName();
     
 
     public function __construct(DataBase $db)
