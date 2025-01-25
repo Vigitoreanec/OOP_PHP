@@ -17,7 +17,7 @@ abstract class Model implements IModel
 
     public function __construct()
     {
-        $this->db = new DataBase();
+        $this->db = DataBase::getInstance();
     }
 
     public function query()

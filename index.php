@@ -12,7 +12,7 @@ $category = new Category();
 
 print_r($post->getAll());
 print_r($category->getAll());
-print_r($category->getOne(12));
+print_r($category->getOne(5));
 
 
 
