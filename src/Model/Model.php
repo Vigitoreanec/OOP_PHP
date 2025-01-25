@@ -15,9 +15,9 @@ abstract class Model implements IModel
 
     protected $query = [];
 
-    public function __construct(DataBase $db)
+    public function __construct()
     {
-        $this->db = $db;
+        $this->db = new DataBase();
     }
 
     public function query()
@@ -57,6 +57,6 @@ abstract class Model implements IModel
     public function getAll()
     {
         $sql = "SELECT * from {$this->getTableName()}" . PHP_EOL;
-        return $this->db->queryOne($sql);
+        return $this->db->queryAll($sql);
     }
 }

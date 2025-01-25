@@ -1,6 +1,6 @@
 <?php
 
-use Sergey\Oop\Model\Model;
+namespace Sergey\Oop\Model;
 
 class Category extends Model
 {

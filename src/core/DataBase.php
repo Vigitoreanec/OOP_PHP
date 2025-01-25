@@ -2,7 +2,7 @@
 
 namespace Sergey\Oop\core;
 
-use \PDO;
+use PDO;
 
 class DataBase
 {
@@ -12,7 +12,7 @@ class DataBase
         'host' => 'localhost',
         'login' => '',
         'password' => '',
-        'database' => 'blog.db'
+        'database' => 'database.db'
     ];
 
     private ?\PDO $connection = null;
@@ -20,6 +20,7 @@ class DataBase
     private function getConnection(): PDO
     {
         if (is_null($this->connection)) {
+            var_dump("Подключение в БД");
             $this->connection = new PDO("{$this->config['driver']}:{$this->config['database']}");
             $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         }
@@ -27,15 +28,22 @@ class DataBase
     }
 
 
+    private function query(string $sql, array $params = [])
+    {
+        $pdoStatement = $this->getConnection()->prepare($sql);
+        $pdoStatement->execute($params);
+        return $pdoStatement;
+    }
+
     //select where id = 1
     public function queryOne(string $sql, array $params = [])
     {
-        return $sql;
+        return $this->query($sql, $params)->fetch();
     }
 
     //select All
     public function queryAll($sql)
     {
-        return $sql;
+        return $this->query($sql)->fetchAll();
     }
 }
