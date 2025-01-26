@@ -3,6 +3,8 @@
 namespace Sergey\Oop\core;
 
 use PDO;
+use PDOStatement;
+use Sergey\Oop\traits\TSingletone;
 
 class DataBase
 {
@@ -15,7 +17,9 @@ class DataBase
         'database' => 'database.db'
     ];
 
-    private ?\PDO $connection = null;
+    use TSingletone;
+
+    private ?PDO $connection = null;
 
     private function getConnection(): PDO
     {

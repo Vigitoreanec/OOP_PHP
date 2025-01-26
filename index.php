@@ -10,7 +10,7 @@ $user = new User();
 $post = new Post();
 $category = new Category();
 
-print_r($post->getAll());
+//print_r($post->getAll());
 print_r($category->getAll());
 print_r($category->getOne(5));
 
