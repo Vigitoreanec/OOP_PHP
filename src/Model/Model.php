@@ -44,13 +44,17 @@ abstract class Model implements IModel
 
     public static function getOne(int $id)
     {
-        $table = static::getTableName();
-        $sql = "SELECT * from $table WHERE id = :id" . PHP_EOL;
+        $tableName = static::getTableName();
+        $sql = "SELECT * from $tableName WHERE id = :id" . PHP_EOL;
         return DataBase::getInstance()->queryOneObject($sql, ['id' => $id], static::class);
     }
+    
     public function getAll()
     {
-        $sql = "SELECT * from {$this->getTableName()}" . PHP_EOL;
+        $tableName = $this->getTableName();
+        $sql = "SELECT * from $tableName" . PHP_EOL;
         return DataBase::getInstance()->queryAll($sql);
     }
+
+    
 }

@@ -39,6 +39,14 @@ class DataBase
         return $pdoStatement;
     }
 
+    
+    public function execute(string $sql, array $params = [])
+    {
+        return $this->query($sql, $params);
+    }
+    
+    
+
     //select where id = 1
     public function queryOne(string $sql, array $params = [])
     {
