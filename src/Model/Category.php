@@ -18,9 +18,16 @@ class Category extends Model
     {
         $tableName = $this->getTableName();
         $sql = "SELECT INTO $tableName (title) VALUE (?)";
-        return DataBase::getInstance()->execute($sql, [$this->title]);
+        $this->id = DataBase::getInstance()->lastInsertId();
+        DataBase::getInstance()->execute($sql, [$this->title]);
+        return $this;
     }
 
+    public function save()
+    {
+
+    }
+    
     protected static function getTableName()
     {
         return "categories";

@@ -45,7 +45,10 @@ class DataBase
         return $this->query($sql, $params);
     }
     
-    
+    public function lastInsertId(): int
+    {
+        return $this->getConnection()->lastInsertId();
+    }
 
     //select where id = 1
     public function queryOne(string $sql, array $params = [])
