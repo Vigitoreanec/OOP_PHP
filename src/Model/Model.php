@@ -9,16 +9,9 @@ use Sergey\Oop\Interfaces\IModel;
 abstract class Model implements IModel
 {
 
-    protected $db;
-
-    abstract protected function getTableName();
+    abstract static protected function getTableName();
 
     protected $query = [];
-
-    public function __construct()
-    {
-        $this->db = DataBase::getInstance();
-    }
 
     public function query()
     {
@@ -46,17 +39,18 @@ abstract class Model implements IModel
             $sql .= " WHERE $queryCondition;";
         }
 
-        return $this->db->queryAll($sql);
+        return DataBase::getInstance()->queryAll($sql);
     }
 
-    public function getOne(int $id)
+    public static function getOne(int $id)
     {
-        $sql = "SELECT * from {$this->getTableName()} WHERE id = :id" . PHP_EOL;
-        return $this->db->queryOneObject($sql, ['id' => $id], static::class);
+        $table = static::getTableName();
+        $sql = "SELECT * from $table WHERE id = :id" . PHP_EOL;
+        return DataBase::getInstance()->queryOneObject($sql, ['id' => $id], static::class);
     }
     public function getAll()
     {
         $sql = "SELECT * from {$this->getTableName()}" . PHP_EOL;
-        return $this->db->queryAll($sql);
+        return DataBase::getInstance()->queryAll($sql);
     }
 }

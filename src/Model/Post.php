@@ -11,14 +11,14 @@ class Post extends Model
 
     public function __construct(int $id = null, string $title = null, string $text = null, int $userId = null)
     {
-        parent::__construct();
+        //parent::__construct();
         $this->id = $id;
         $this->title = $title;
         $this->text = $text;
         $this->userId = $userId;
     }
 
-    protected function getTableName()
+    protected static function getTableName()
     {
         return "posts";
     }

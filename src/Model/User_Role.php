@@ -9,12 +9,12 @@ class User_Role extends Model
 
     public function __construct(int $id = null, string $title = null)
     {
-        parent::__construct();
+        //parent::__construct();
         $this->id = $id;
         $this->title = $title;
     }
 
-    protected function getTableName()
+    protected static function getTableName()
     {
         return "userRoles";
     }

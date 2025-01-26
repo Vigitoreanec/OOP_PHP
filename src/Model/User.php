@@ -11,13 +11,13 @@ class User extends Model
 
     public function __construct(int $id = null, string $name = null, int $userRoleId = null)
     {
-        parent::__construct();
+        //parent::__construct();
         $this->id = $id;
         $this->name = $name;
         $this->userRoleId = $userRoleId;
     }
 
-    protected function getTableName()
+    protected static function getTableName()
     {
         return "users";
     }

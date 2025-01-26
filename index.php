@@ -6,13 +6,14 @@ use Sergey\Oop\Model\Post;
 use Sergey\Oop\Model\User;
 use Sergey\Oop\Model\Category;
 
-$user = new User();
-$post = new Post();
-$category = new Category();
+//$user = new User();
+//$post = new Post();
+$category = Category::getOne(5);
 
 //print_r($post->getAll());
+
+print_r($category);
 print_r($category->getAll());
-print_r($category->getOne(5));
 
 
 
