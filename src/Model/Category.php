@@ -9,7 +9,6 @@ class Category extends Model
 
     public function __construct(int $id = null, string $title = null)
     {
-        //parent::__construct();
         $this->id = $id;
         $this->title = $title;
     }

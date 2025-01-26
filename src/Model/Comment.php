@@ -10,8 +10,7 @@ class Comment extends Model
 
     public function __construct(string $text = null, int $userId = null, int $postId = null)
     {
-        //parent::__construct();
-        $this->text = $text;
+                $this->text = $text;
         $this->userId = $userId;
         $this->postId = $postId;
     }
