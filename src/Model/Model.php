@@ -52,7 +52,7 @@ abstract class Model implements IModel
     public function getOne(int $id)
     {
         $sql = "SELECT * from {$this->getTableName()} WHERE id = :id" . PHP_EOL;
-        return $this->db->queryOne($sql, ['id' => $id]);
+        return $this->db->queryOneObject($sql, ['id' => $id], static::class);
     }
     public function getAll()
     {

@@ -32,7 +32,7 @@ class DataBase
     }
 
 
-    private function query(string $sql, array $params = [])
+    private function query(string $sql, array $params = []): PDOStatement
     {
         $pdoStatement = $this->getConnection()->prepare($sql);
         $pdoStatement->execute($params);
@@ -43,6 +43,13 @@ class DataBase
     public function queryOne(string $sql, array $params = [])
     {
         return $this->query($sql, $params)->fetch();
+    }
+
+    public function queryOneObject(string $sql, array $params, string $class)
+    {
+        $pdoStatement = $this->query($sql, $params);
+        $pdoStatement->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, $class);
+        return $pdoStatement->fetch();
     }
 
     //select All
