@@ -9,9 +9,8 @@ class Post extends Model
     public ?string $text;
     public ?int $userId;
 
-    public function __construct(int $id = null, string $title = null, string $text = null, int $userId = null)
+    public function __construct(string $title = null, string $text = null, int $userId = null)
     {
-        $this->id = $id;
         $this->title = $title;
         $this->text = $text;
         $this->userId = $userId;
