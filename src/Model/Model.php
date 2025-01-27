@@ -56,5 +56,4 @@ abstract class Model implements IModel
         return DataBase::getInstance()->queryAll($sql);
     }
 
-    
 }
