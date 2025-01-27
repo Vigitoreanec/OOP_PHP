@@ -6,8 +6,18 @@ use Sergey\Oop\core\DataBase;
 
 class Category extends Model
 {
-    public ?int $id = null;
-    private ?string $title;
+    protected ?int $id = null;
+    protected ?string $title;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
 
     public function getTitle()
     {

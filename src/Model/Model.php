@@ -8,7 +8,7 @@ use Sergey\Oop\Interfaces\IModel;
 
 abstract class Model implements IModel
 {
-    public int $id;
+    public ?int $id = null;
     abstract static protected function getTableName();
 
     protected $query = [];
@@ -64,7 +64,7 @@ abstract class Model implements IModel
         $values = [];
 
         foreach ($this as $key => $value) {
-            if ($key !== 'id' && $value !== null) {
+            if ($key != 'id' && $value != null) {
                 $params[] = $key;
                 $columns[] = '?';
                 $values[] = $value;
@@ -75,14 +75,10 @@ abstract class Model implements IModel
         $columnsCount = implode(', ', $columns);
 
         $sql = "INSERT INTO $tableName ($paramColumns) VALUES ($columnsCount)";
-        // var_dump($sql);
-
-        // die;
-
+        
         DataBase::getInstance()->execute($sql, $values);
-        if (property_exists($this, 'query')) {
-            $this->id = DataBase::getInstance()->lastInsertId();
-          }
+        $this->id = DataBase::getInstance()->lastInsertId();
+        var_dump("Данные добавлены");
         return $this;
     }
 }

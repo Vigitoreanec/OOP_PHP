@@ -6,10 +6,10 @@ use Sergey\Oop\core\DataBase;
 
 class Post extends Model
 {
-    public int $id;
+    public ?int $id;
     protected ?string $title;
     protected ?string $text;
-    protected ?int $categoryId;
+    protected ?int $id_category;
 
     public function getId()
     {
@@ -43,20 +43,20 @@ class Post extends Model
 
     public function getCategoryId()
     {
-        return $this->categoryId;
+        return $this->id_category;
     }
 
-    public function setCategoryId(string $categoryId)
+    public function setCategoryId(string $id_category)
     {
-        $this->categoryId = $categoryId;
+        $this->id_category = $id_category;
     }
 
 
-    public function __construct(string $title = null, string $text = null, int $categoryId = null)
+    public function __construct(string $title = null, string $text = null, int $id_category = null)
     {
         $this->title = $title;
         $this->text = $text;
-        $this->categoryId = $categoryId;
+        $this->id_category = $id_category;
     }
 
 

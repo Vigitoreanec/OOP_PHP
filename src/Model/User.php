@@ -6,9 +6,19 @@ use Sergey\Oop\core\DataBase;
 
 class User extends Model
 {
-    public ?int $id;
-    public ?string $name;
-    public ?int $userRoleId;
+    protected ?int $id;
+    protected ?string $name;
+    protected ?int $userRoleId;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
 
     public function getName()
     {

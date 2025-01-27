@@ -16,7 +16,7 @@ use Sergey\Oop\Model\Category;
 //print_r($category->getAll());
 
 
-$post = new Post("Title 19", "Text ddsgd", 4);
+$post = new Post("Title 20", "Text ddsgd", 6);
 $post->insertModel();
 
 

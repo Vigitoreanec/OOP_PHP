@@ -11,6 +11,16 @@ class Comment extends Model
     protected ?int $userId;
     protected ?int $postId;
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
     public function getText()
     {
         return $this->text;
@@ -48,7 +58,7 @@ class Comment extends Model
         $this->postId = $postId;
     }
 
-    public function insert()
+    protected function insert()
     {
         $tableName = $this->getTableName();
         $sql = "INSERT INTO $tableName (text, userId, postId) VALUES (?, ?, ?)";
