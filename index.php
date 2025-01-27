@@ -16,7 +16,8 @@ print_r($category);
 print_r($category->getAll());
 
 
-
+$post = new Post("Title 17", "Text dsfffd", 5);
+$post->insert();
 
 
 // AR CRUD над одной записью в БД через ООП
