@@ -6,10 +6,20 @@ use Sergey\Oop\core\DataBase;
 
 class Post extends Model
 {
-    public ?int $id = null;
-    private ?string $title;
-    private ?string $text;
-    private ?int $categoryId;
+    public int $id;
+    protected ?string $title;
+    protected ?string $text;
+    protected ?int $categoryId;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
 
     public function getTitle()
     {

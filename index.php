@@ -8,16 +8,16 @@ use Sergey\Oop\Model\Category;
 
 //$user = new User();
 //$post = new Post();
-$category = Category::getOne(5);
+//$category = Category::getOne(5);
 
 //print_r($post->getAll());
 
-print_r($category);
-print_r($category->getAll());
+//print_r($category);
+//print_r($category->getAll());
 
 
-$post = new Post("Title 17", "Text dsfffd", 5);
-$post->insert();
+$post = new Post("Title 19", "Text ddsgd", 4);
+$post->insertModel();
 
 
 // AR CRUD над одной записью в БД через ООП

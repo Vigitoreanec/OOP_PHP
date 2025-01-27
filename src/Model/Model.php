@@ -8,7 +8,7 @@ use Sergey\Oop\Interfaces\IModel;
 
 abstract class Model implements IModel
 {
-
+    public int $id;
     abstract static protected function getTableName();
 
     protected $query = [];
@@ -48,7 +48,7 @@ abstract class Model implements IModel
         $sql = "SELECT * from $tableName WHERE id = :id" . PHP_EOL;
         return DataBase::getInstance()->queryOneObject($sql, ['id' => $id], static::class);
     }
-    
+
     public function getAll()
     {
         $tableName = $this->getTableName();
@@ -56,4 +56,33 @@ abstract class Model implements IModel
         return DataBase::getInstance()->queryAll($sql);
     }
 
+    public function insertModel()
+    {
+        $tableName = static::getTableName();
+        $params = [];
+        $columns = [];
+        $values = [];
+
+        foreach ($this as $key => $value) {
+            if ($key !== 'id' && $value !== null) {
+                $params[] = $key;
+                $columns[] = '?';
+                $values[] = $value;
+            }
+        }
+
+        $paramColumns = implode(', ', $params); //id
+        $columnsCount = implode(', ', $columns);
+
+        $sql = "INSERT INTO $tableName ($paramColumns) VALUES ($columnsCount)";
+        // var_dump($sql);
+
+        // die;
+
+        DataBase::getInstance()->execute($sql, $values);
+        if (property_exists($this, 'query')) {
+            $this->id = DataBase::getInstance()->lastInsertId();
+          }
+        return $this;
+    }
 }

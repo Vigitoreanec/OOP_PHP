@@ -6,8 +6,8 @@ use Sergey\Oop\core\DataBase;
 
 class Comment extends Model
 {
-    public ?int $id;
-    private ?string $text;
+    protected ?int $id;
+    protected ?string $text;
     protected ?int $userId;
     protected ?int $postId;
 
