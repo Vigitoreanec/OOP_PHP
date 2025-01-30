@@ -2,22 +2,14 @@
 
 namespace Sergey\Oop\Model;
 
-use Sergey\Oop\core\DataBase;
-
 class User_Role extends Model
 {
-    protected ?int $id;
+    protected ?int $id = null;
     protected ?string $title;
 
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    public function setId(int $id)
-    {
-        $this->id = $id;
-    }
+    protected array $props = [
+        'title' => false
+    ];
 
     public function __construct(string $title = null)
     {
@@ -26,6 +18,6 @@ class User_Role extends Model
 
     protected static function getTableName()
     {
-        return "userRoles";
+        return "User_Role";
     }
 }

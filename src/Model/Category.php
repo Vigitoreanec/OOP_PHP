@@ -9,25 +9,9 @@ class Category extends Model
     protected ?int $id = null;
     protected ?string $title;
 
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    public function setId(int $id)
-    {
-        $this->id = $id;
-    }
-
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title)
-    {
-        $this->title = $title;
-    }
+    protected array $props = [
+        'title' => false
+    ];
 
     public function __construct(string $title = null)
     {
@@ -40,27 +24,8 @@ class Category extends Model
         $sql = "INSERT INTO $tableName (title) VALUES (?)";
         //var_dump($sql);
         //die();
-        DataBase::getInstance()->execute($sql, [$this->getTitle()]);
+        DataBase::getInstance()->execute($sql, [$this->title]);
         $this->id = DataBase::getInstance()->lastInsertId();
-        // var_dump($this->id);
-        // die();
-        return $this;
-    }
-
-    // public function update()
-    // {
-    //     $tableName = $this->getTableName();
-    //     $sql = "INSERT INTO $tableName (title) VALUES (?)";
-
-    // }
-
-    public function save()
-    {
-        if (is_null($this->id)) {
-            $this->insert();
-        } else {
-            //$this->update();
-        }
         return $this;
     }
 

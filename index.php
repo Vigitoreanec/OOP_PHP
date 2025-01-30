@@ -20,7 +20,7 @@ use Sergey\Oop\Model\Comment;
 //$post->insertModel();
 
 $comment = new Comment("Хороший комент", 1, 4);
-$comment->insertModel();
+print_r($comment->getOne(2));
 // AR CRUD над одной записью в БД через ООП
 /*
 // C -> Create

@@ -5,6 +5,7 @@ namespace Sergey\Oop\core;
 use PDO;
 use PDOStatement;
 use Sergey\Oop\traits\TSingletone;
+use Sergey\Oop\Model\Model;
 
 class DataBase
 {
@@ -39,12 +40,12 @@ class DataBase
         return $pdoStatement;
     }
 
-    
+
     public function execute(string $sql, array $params = [])
     {
         return $this->query($sql, $params);
     }
-    
+
     public function lastInsertId(): int
     {
         return $this->getConnection()->lastInsertId();
