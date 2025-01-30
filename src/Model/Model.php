@@ -93,4 +93,16 @@ abstract class Model implements IModel
         // die();
         return $this;
     }
+
+    public function save()
+    {
+        if (is_null($this->getId())) {
+            $this->insertModel();
+        } else {
+            $this->update();
+        }
+        return $this;
+    }
+
+    public function update() {}
 }
