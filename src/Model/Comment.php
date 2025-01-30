@@ -1,6 +1,6 @@
 <?php
 
-use Sergey\Oop\Model\Model;
+namespace Sergey\Oop\Model;
 
 use Sergey\Oop\core\DataBase;
 
@@ -11,14 +11,14 @@ class Comment extends Model
     protected ?int $userId;
     protected ?int $postId;
 
-    public function getId()
-    {
-        return $this->id;
-    }
-
     public function setId(int $id)
     {
         $this->id = $id;
+    }
+    
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function getText()
@@ -69,6 +69,6 @@ class Comment extends Model
 
     protected static function getTableName()
     {
-        return "postComments";
+        return "Comment";
     }
 }

@@ -1,6 +1,8 @@
 <?php
 
-use Sergey\Oop\Model\Model;
+namespace Sergey\Oop\Model;
+
+use Sergey\Oop\core\DataBase;
 
 class User_Role extends Model
 {

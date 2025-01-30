@@ -8,10 +8,20 @@ use Sergey\Oop\Interfaces\IModel;
 
 abstract class Model implements IModel
 {
-    public ?int $id = null;
+
     abstract static protected function getTableName();
 
     protected $query = [];
+
+    private function setId(int $id)
+    {
+        return static::setId($id);
+    }
+
+    protected function getId()
+    {
+        return static::getId();
+    }
 
     public function query()
     {
@@ -75,10 +85,12 @@ abstract class Model implements IModel
         $columnsCount = implode(', ', $columns);
 
         $sql = "INSERT INTO $tableName ($paramColumns) VALUES ($columnsCount)";
-        
+
         DataBase::getInstance()->execute($sql, $values);
-        $this->id = DataBase::getInstance()->lastInsertId();
+        $this->setId(DataBase::getInstance()->lastInsertId());
         var_dump("Данные добавлены");
+        // var_dump($this);
+        // die();
         return $this;
     }
 }

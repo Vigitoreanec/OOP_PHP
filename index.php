@@ -5,6 +5,7 @@ include "vendor/autoload.php";
 use Sergey\Oop\Model\Post;
 use Sergey\Oop\Model\User;
 use Sergey\Oop\Model\Category;
+use Sergey\Oop\Model\Comment;
 
 //$user = new User();
 //$post = new Post();
@@ -15,11 +16,11 @@ use Sergey\Oop\Model\Category;
 //print_r($category);
 //print_r($category->getAll());
 
+//$post = new Post("Title 20", "Text ddsgd", 6);
+//$post->insertModel();
 
-$post = new Post("Title 20", "Text ddsgd", 6);
-$post->insertModel();
-
-
+$comment = new Comment("Хороший комент", 1, 4);
+$comment->insertModel();
 // AR CRUD над одной записью в БД через ООП
 /*
 // C -> Create
