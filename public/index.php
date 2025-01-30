@@ -1,6 +1,6 @@
 <?php
 
-include "vendor/autoload.php";
+include __DIR__ . "/../vendor/autoload.php";
 
 use Sergey\Oop\Model\Post;
 use Sergey\Oop\Model\User;
@@ -19,8 +19,8 @@ use Sergey\Oop\Model\Comment;
 //$post = new Post("Title 20", "Text ddsgd", 6);
 //$post->insertModel();
 
-$comment = new Comment("Хороший комент", 1, 4);
-print_r($comment->getOne(2));
+$comment = new Comment("Хороший комент", 2, 4);
+$comment->update();
 // AR CRUD над одной записью в БД через ООП
 /*
 // C -> Create

@@ -11,6 +11,7 @@ class User extends Model
     protected ?int $userRoleId;
 
     protected array $props = [
+        'id' => false,
         'name' => false,
         'userRoleId' => false
     ];

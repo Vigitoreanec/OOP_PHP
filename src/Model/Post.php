@@ -12,7 +12,7 @@ class Post extends Model
     protected ?int $id_category;
 
 
-    protected array $props = [
+    public array $props = [
         'title' => false,
         'text' => false,
         'id_category' => false,

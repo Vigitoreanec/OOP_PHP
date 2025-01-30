@@ -97,15 +97,16 @@ abstract class DbModel implements IModel
 
         foreach ($this->props as $key => $value) {
             if (!$value) continue;
-            $params["{$key}"] = $this->$key;
-            $colums[] .= "`{$key}` = :{$key}";
+            $params[$key] = $this->$key;
+            $colums[] .= "{$key} = :{$key}";
             $this->props[$key] = false;
         }
         $colums = implode(", ", $colums);
         $params['id'] = $this->id;
 
-        $sql = "UPDATE $tableName SET {$colums} WHERE `id` = :id";
-
+        $sql = "UPDATE $tableName SET {$colums} WHERE id = :id";
+        var_dump($sql);
+        die();
         DataBase::getInstance()->execute($sql, $params);
         return $this;
     }
