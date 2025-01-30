@@ -80,7 +80,7 @@ abstract class DbModel implements IModel
 
     public function save()
     {
-        if (is_null(static->getId())) {
+        if (is_null($this->id)) {
             $this->insertModel();
         } else {
             $this->update();
