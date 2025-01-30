@@ -104,7 +104,7 @@ abstract class DbModel implements IModel
         $colums = implode(", ", $colums);
         $params['id'] = $this->id;
 
-        $sql = "UPDATE `{$tableName}` SET {$colums} WHERE `id` = :id";
+        $sql = "UPDATE $tableName SET {$colums} WHERE `id` = :id";
 
         DataBase::getInstance()->execute($sql, $params);
         return $this;
