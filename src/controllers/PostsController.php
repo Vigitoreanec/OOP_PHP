@@ -39,7 +39,8 @@ class PostsController
         $post = Post::getOne($id);
         echo $this->renderTemplate('post', [
             'title' => $post->title,
-            'text' => $post->text
+            'text' => $post->text,
+            'id_category' => $post->id_category
         ]);
     }
 
