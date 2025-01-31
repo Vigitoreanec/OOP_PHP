@@ -26,7 +26,7 @@ class DataBase
     {
         if (is_null($this->connection)) {
             var_dump("Подключение в БД");
-            $this->connection = new PDO("{$this->config['driver']}:{$this->config['database']}");
+            $this->connection = new PDO("{$this->config['driver']}:../{$this->config['database']}");
             $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         }
         return $this->connection;

@@ -1,26 +1,44 @@
 <?php
 
+//routing
+
+//localhost/index.php
+//localhost/posts.php       localhost/posts
+//localhost/post.php?id=2   localhost/post?id=2
+//localhost/users.php       localhost/users/5
+
+//localhost/?page=user&id=2     localhost/?c=user ->c(controller)
+
+use Sergey\Oop\controllers\PostsController;
+
 include __DIR__ . "/../vendor/autoload.php";
 
-use Sergey\Oop\Model\Post;
-use Sergey\Oop\Model\User;
-use Sergey\Oop\Model\Category;
-use Sergey\Oop\Model\Comment;
 
-//$user = new User();
-//$post = new Post();
-//$category = Category::getOne(5);
+$controllerName = $_GET["c"] ?? 'posts';
+$actionName = $_GET["a"] ?? 'index';
 
-//print_r($post->getAll());
+$controllerClass = "Sergey\\Oop\\controllers\\"  . ucfirst($controllerName) . "Controller";;
 
-//print_r($category);
-//print_r($category->getAll());
+//var_dump($controllerClass);
+//var_dump(class_exists($controllerClass));
 
-//$post = new Post("Title 20", "Text ddsgd", 6);
-//$post->insertModel();
+if (class_exists($controllerClass)) {
+    $controller = new $controllerClass();
+    $controller->runAction($actionName);
+} else {
+    echo "Нет такого контроллера";
+}
 
-$comment = new Comment("Хороший комент", 2, 4);
-$comment->update();
+
+
+
+
+
+
+
+
+
+
 // AR CRUD над одной записью в БД через ООП
 /*
 // C -> Create
