@@ -7,7 +7,9 @@
 </head>
 
 <body>
-    <?= $menu ?>
+    <div style="padding: 10px 20px;">
+        <?= $menu ?>
+    </div>
     <?= $content ?>
 </body>
 

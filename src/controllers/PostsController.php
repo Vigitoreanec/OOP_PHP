@@ -12,8 +12,12 @@ class PostsController extends Controller
         $posts = Post::getAll();
         //var_dump($posts);
         //include "../src/views/index.php";
+        $message = $_SESSION['message'] ?? null;
+        $_SESSION['message'] = null;
+
         echo $this->render('posts/index', [
-            'posts' => $posts
+            'posts' => $posts,
+            'message' => $message
         ]);
     }
 
@@ -28,5 +32,37 @@ class PostsController extends Controller
         echo $this->render('posts/post', [
             'post' => $post
         ]);
+    }
+
+    public function actionSave()
+    {
+        $title = $_POST['title'];
+        $text = $_POST['text'];
+
+        $_SESSION['message'] = null;
+
+        if (empty($title)) {
+            $_SESSION['message'] = "Название должно быть заполнено";
+            header('Location: /posts');
+            exit;
+        }
+
+
+        $post = new Post($title, $text);
+        $post->save();
+
+
+        $_SESSION['message'] = "Post saved";
+        header('Location: /posts');
+    }
+
+    public function actionDelete()
+    {
+      
+        $id = $_GET['id'];
+        $post = Post::getOne($id);
+        $post->delete();
+        $_SESSION['message'] = "Пост удален";
+        header('Location: /posts');
     }
 }

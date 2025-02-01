@@ -1,1 +1,2 @@
-<h2>Hello</h2>
+<a href="/">Главная</a>
+<a href="/?c=posts">Посты</a>
