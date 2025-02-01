@@ -1,8 +1,6 @@
 <?php
 
-namespace Sergey\Oop\Model;
-
-use Sergey\Oop\core\DataBase;
+namespace Sergey\Oop\model;
 
 class Post extends Model
 {
@@ -12,11 +10,13 @@ class Post extends Model
     protected ?int $id_category;
 
 
-    public array $props = [
+    protected array $props = [
         'title' => false,
         'text' => false,
         'id_category' => false,
     ];
+
+    
 
     public function getCategoryId()
     {
@@ -35,7 +35,7 @@ class Post extends Model
         $this->id_category = $id_category;
     }
 
-    protected static function getTableName()
+    protected static function getTableName():string
     {
         return "posts";
     }

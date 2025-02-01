@@ -9,7 +9,7 @@
 
 //localhost/?page=user&id=2     localhost/?c=user ->c(controller)
 
-use Sergey\Oop\controllers\PostsController;
+use Sergey\Oop\core\Render;
 
 include __DIR__ . "/../vendor/autoload.php";
 
@@ -19,44 +19,14 @@ $actionName = $_GET["a"] ?? 'index';
 
 $controllerClass = "Sergey\\Oop\\controllers\\"  . ucfirst($controllerName) . "Controller";;
 
-//var_dump($controllerClass);
-//var_dump(class_exists($controllerClass));
+try {
 
-if (class_exists($controllerClass)) {
-    $controller = new $controllerClass();
-    $controller->runAction($actionName);
-} else {
-    echo "Нет такого контроллера";
+    if (class_exists($controllerClass)) {
+        $controller = new $controllerClass(new Render());
+        $controller->runAction($actionName);
+    } else {
+        throw new Exception("Нет такого контроллера");
+    }
+} catch (Exception $ex) {
+    echo $ex->getMessage();
 }
-
-
-
-
-
-
-
-
-
-
-
-// AR CRUD над одной записью в БД через ООП
-/*
-// C -> Create
-
-$post = new Post("post");
-
-$post->insert();
-
-// R -> Read
-$post = Post::getOne($id);
-$post = Post::getAll();
-
-// U -> Update
-$post->title = "new";
-$post->update();
-
-//$post->save();
-
-// D -> Delete
-$post->delete();
-*/

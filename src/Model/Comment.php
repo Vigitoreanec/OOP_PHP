@@ -1,8 +1,6 @@
 <?php
 
-namespace Sergey\Oop\Model;
-
-use Sergey\Oop\core\DataBase;
+namespace Sergey\Oop\model;
 
 class Comment extends Model
 {
@@ -24,7 +22,7 @@ class Comment extends Model
         $this->postId = $postId;
     }
 
-    protected static function getTableName()
+    protected static function getTableName(): string
     {
         return "Comment";
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sergey\Oop\Model;
+namespace Sergey\Oop\model;
 
 use Sergey\Oop\core\DataBase;
 
@@ -29,7 +29,7 @@ class Category extends Model
         return $this;
     }
 
-    protected static function getTableName()
+    protected static function getTableName():string
     {
         return "categories";
     }

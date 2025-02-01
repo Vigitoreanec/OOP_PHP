@@ -1,6 +1,6 @@
 <?php
 
-namespace Sergey\Oop\Model;
+namespace Sergey\Oop\model;
 
 class User_Role extends Model
 {
@@ -16,7 +16,7 @@ class User_Role extends Model
         $this->title = $title;
     }
 
-    protected static function getTableName()
+    protected static function getTableName():string
     {
         return "User_Role";
     }

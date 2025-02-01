@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 
@@ -12,7 +11,7 @@
     <div>
         <?php foreach ($posts as $post): ?>
             <div style=" text-align: center; background: grey; height: auto; width: 350px; margin: 20px auto">
-                <a href="/?c=posts&a=post&id=<?= $post['id'] ?>">
+                <a href="/?c=posts&a=show&id=<?= $post['id'] ?>">
                     <span>Post #<?= $post['id'] ?> -> <?= $post['title'] ?></span>
                 </a>
             </div>

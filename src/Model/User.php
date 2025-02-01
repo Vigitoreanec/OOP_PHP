@@ -1,8 +1,6 @@
 <?php
 
-namespace Sergey\Oop\Model;
-
-use Sergey\Oop\core\DataBase;
+namespace Sergey\Oop\model;
 
 class User extends Model
 {
@@ -11,17 +9,26 @@ class User extends Model
     protected ?int $userRoleId;
 
     protected array $props = [
-        'id' => false,
         'name' => false,
         'userRoleId' => false
     ];
 
-    public function getuserRoleId()
+    public function getUserName()
+    {
+        return $this->name;
+    }
+
+    public function setUserName(string $name)
+    {
+        $this->name = $name;
+    }
+
+    public function getUserRoleId()
     {
         return $this->userRoleId;
     }
 
-    public function setuserRoleId(string $userRoleId)
+    public function setUserRoleId(string $userRoleId)
     {
         $this->userRoleId = $userRoleId;
     }
@@ -32,7 +39,7 @@ class User extends Model
         $this->userRoleId = $userRoleId;
     }
 
-    protected static function getTableName()
+    protected static function getTableName():string
     {
         return "User";
     }

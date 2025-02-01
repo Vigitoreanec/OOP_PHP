@@ -1,16 +1,15 @@
 <?php
 
-namespace Sergey\Oop\core;
+namespace Sergey\Oop\Core;
 
 use PDO;
 use PDOStatement;
-use Sergey\Oop\traits\TSingletone;
 use Sergey\Oop\Model\Model;
+use Sergey\Oop\traits\TSingletone;
 
 class DataBase
 {
-    private array $config =
-    [
+    private array $config = [
         'driver' => 'sqlite',
         'host' => 'localhost',
         'login' => '',
@@ -25,13 +24,11 @@ class DataBase
     private function getConnection(): PDO
     {
         if (is_null($this->connection)) {
-            var_dump("Подключение в БД");
             $this->connection = new PDO("{$this->config['driver']}:../{$this->config['database']}");
             $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         }
         return $this->connection;
     }
-
 
     private function query(string $sql, array $params = []): PDOStatement
     {
@@ -40,18 +37,18 @@ class DataBase
         return $pdoStatement;
     }
 
-
-    public function execute(string $sql, array $params = [])
-    {
-        return $this->query($sql, $params);
-    }
-
     public function lastInsertId(): int
     {
         return $this->getConnection()->lastInsertId();
     }
 
-    //select where id = 1
+    public function execute(string $sql, array $params = []): PDOStatement
+    {
+        return $this->query($sql, $params);
+    }
+
+
+    //Select where id = :id, ['id' => 1]
     public function queryOne(string $sql, array $params = [])
     {
         return $this->query($sql, $params)->fetch();
@@ -64,9 +61,11 @@ class DataBase
         return $pdoStatement->fetch();
     }
 
+
     //select All
-    public function queryAll($sql)
+    public function queryAll($sql): bool|array
     {
         return $this->query($sql)->fetchAll();
     }
+
 }
