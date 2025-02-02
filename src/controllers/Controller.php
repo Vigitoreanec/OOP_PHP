@@ -3,7 +3,7 @@
 namespace Sergey\Oop\controllers;
 
 use Sergey\Oop\interfaces\IRender;
-
+use Sergey\Oop\model\User;
 
 abstract class Controller
 {
@@ -29,7 +29,9 @@ abstract class Controller
     public function render($template, $params = []): string
     {
         return $this->renderTemplate('layouts/main', [
-            'menu' => $this->renderTemplate('menu'),
+            'menu' => $this->renderTemplate('menu', [
+                'user' => User::getUserRole()
+            ]),
             'content' => $this->renderTemplate($template, $params)
         ]);
     }

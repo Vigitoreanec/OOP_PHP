@@ -2,14 +2,15 @@
 <a href="/?c=posts">Посты</a>
 
 <?php if ($user): ?>
-    Привет <?= $user ?>
-    <a class="nav-link">Показ</a>
+
+
     <div class="button login" style="position: absolute; right: 90px; top: 10px;">
-        <a class="btn btn-secondary" type="button">Выйти</a>
+        <span style="padding-right: 20px;">Привет <?= $user ?></span>
+        <a class="btn btn-secondary" href="/?c=auth&a=logout">Выйти</a>
     </div>
 
 <?php else: ?>
-    <form action="/?login" method="post">
+    <form action="/?c=auth&a=login" method="post">
         <div class="row" style="text-align: center;">
             <div class="form-data">
                 <label></label>
@@ -25,7 +26,7 @@
                 width: auto;
                 height: 30px;
                 text-align: center;"></input>
-                <a class="btn btn-primary" href="/?logout"
+                <a class="btn btn-primary" href="/?c=auth&a=logout"
                     style=" position: relative;
                             width: auto;
                             height: 40px;

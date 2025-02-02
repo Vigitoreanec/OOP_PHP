@@ -16,7 +16,23 @@ class User_Role extends Model
         $this->title = $title;
     }
 
-    protected static function getTableName():string
+    public function getUserRole()
+    {
+        return $this->title;
+    }
+
+    public function setUserRole(string $title)
+    {
+        $this->title = $title;
+    }
+
+    public static function isAdmin(): bool
+    {
+        return 'Admin';
+        //return static::getUserRole() === 'Admin';
+    }
+
+    protected static function getTableName(): string
     {
         return "User_Role";
     }

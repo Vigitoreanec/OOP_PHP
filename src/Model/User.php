@@ -13,6 +13,16 @@ class User extends Model
         'userRoleId' => false
     ];
 
+    public static function getUserRole()
+    {
+        return $_SESSION['login'] ?? false;
+    }
+
+    // public static function isUserRole(): bool
+    // {
+    //     return $_SESSION['login'] === User_Role::isAdmin();
+    // }
+
     public function getUserName()
     {
         return $this->name;
@@ -39,7 +49,7 @@ class User extends Model
         $this->userRoleId = $userRoleId;
     }
 
-    protected static function getTableName():string
+    protected static function getTableName(): string
     {
         return "User";
     }

@@ -3,6 +3,7 @@
 namespace Sergey\Oop\controllers;
 
 use Sergey\Oop\model\Post;
+use Sergey\Oop\model\User;
 
 class PostsController extends Controller
 {
@@ -59,6 +60,11 @@ class PostsController extends Controller
 
     public function actionDelete()
     {
+        if (!User::getUserRole()) {
+            $_SESSION['message'] = "Вы не админ";
+            header('Location: /posts');
+            exit;
+        }
 
         $id = $_GET['id'];
         $post = Post::getOne($id);
