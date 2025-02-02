@@ -12,6 +12,7 @@ class PostsController extends Controller
         $posts = Post::getAll();
         //var_dump($posts);
         //include "../src/views/index.php";
+        //var_dump($_SESSION);
         $message = $_SESSION['message'] ?? null;
         $_SESSION['message'] = null;
 
@@ -58,7 +59,7 @@ class PostsController extends Controller
 
     public function actionDelete()
     {
-      
+
         $id = $_GET['id'];
         $post = Post::getOne($id);
         $post->delete();

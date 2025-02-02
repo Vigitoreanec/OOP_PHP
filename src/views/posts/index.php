@@ -20,9 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <body>
-    <div><?= $message ?></div>
+    <div></div>
     <form action="/?c=posts&a=save" method="post">
-        <input type="text" name="title" placeholder="Название поста" /><br />
+        <input type="text" name="title" placeholder="Название поста" /><?= $message ?><br />
         <input type="text" name="text" placeholder="Текст поста" /><br />
         <input type="submit" value="Добавить" />
     </form>

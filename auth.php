@@ -1,5 +1,28 @@
-<a href="/">Главная</a>
-<a href="/?c=posts">Посты</a>
+<?php
+session_start();
+$user = false;
+
+if (isset($_SESSION['login'])) {
+    $user = $_SESSION['login'];
+}
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header('Location: /');
+    exit();
+}
+
+if (isset($_GET['login'])) {
+    $login = $_POST['login'];
+    $pass = $_POST['pass'];
+    if ($login == 'admin' && $pass == 'admin') {
+        $_SESSION['login'] = 'admin';
+        header('Location: /');
+        exit();
+    }
+}
+
+?>
 
 <?php if ($user): ?>
     Привет <?= $user ?>
