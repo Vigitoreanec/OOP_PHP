@@ -1,5 +1,6 @@
 <a href="/">Главная</a>
 <a href="/?c=posts">Посты</a>
+<a href="/?c=contacts">Контакты</a>
 
 <?php if ($user): ?>
 
