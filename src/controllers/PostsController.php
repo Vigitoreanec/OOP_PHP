@@ -10,6 +10,14 @@ class PostsController extends Controller
 
     public function actionIndex()
     {
+        if (isset($_COOKIE['visit_count'])) {
+            $visit_count = $_COOKIE['visit_count'] + 1;
+        } else {
+            $visit_count = 1;
+        }
+
+        setcookie('visit_count', $visit_count, time() + 3600 * 24 * 30, '/');
+
         $posts = Post::getAll();
         //var_dump($posts);
         //include "../src/views/index.php";
@@ -19,7 +27,8 @@ class PostsController extends Controller
 
         echo $this->render('posts/index', [
             'posts' => $posts,
-            'message' => $message
+            'message' => $message,
+            'visit_count' => $visit_count
         ]);
     }
 
